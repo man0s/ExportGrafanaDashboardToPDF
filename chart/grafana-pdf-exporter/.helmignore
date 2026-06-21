@@ -1,0 +1,7 @@
+# Patterns to ignore when packaging Helm charts.
+# Documented: https://helm.sh/docs/topics/charts/
+.git
+.gitignore
+README.md
+output/
+debug/

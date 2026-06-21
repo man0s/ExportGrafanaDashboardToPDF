@@ -12,7 +12,7 @@ const app = express();
 const port = process.env.EXPORT_SERVER_PORT || 3001;
 
 if (!GRAFANA_USER || !GRAFANA_PASSWORD) {
-    console.error('.env file do not seems to be found or missing required fields. Please check README.md for more information. ');
+    console.error('GRAFANA_USER and GRAFANA_PASSWORD environment variables are required. Please set them or check your .env file. See README.md for details.');
     process.exit(1);
 }
 

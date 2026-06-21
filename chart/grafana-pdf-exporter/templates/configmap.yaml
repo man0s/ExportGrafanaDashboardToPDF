@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "grafana-pdf-exporter.fullname" . }}-config
+  labels:
+    {{- include "grafana-pdf-exporter.labels" . | nindent 4 }}
+data:
+  EXPORT_SERVER_PORT: {{ .Values.server.port | toString | quote }}
+
+  PUPPETEER_EXECUTABLE_PATH: {{ .Values.puppeteer.executablePath | quote }}
+  PUPPETEER_NAVIGATION_TIMEOUT: {{ .Values.puppeteer.navigationTimeout | toString | quote }}
+
+  PDF_WIDTH_PX: {{ .Values.pdf.widthPx | toString | quote }}
+  PDF_HEIGHT_PX: {{ .Values.pdf.heightPx | toString | quote }}
+  ADD_RANDOM_STRING_TO_FILE_NAME: {{ .Values.pdf.addRandomStringToFileName | toString | quote }}
+  FORCE_KIOSK_MODE: {{ .Values.pdf.forceKioskMode | toString | quote }}
+
+  HIDE_DASHBOARD_CONTROLS: {{ .Values.dashboard.hideControls | toString | quote }}
+  EXPAND_COLLAPSED_PANELS: {{ .Values.dashboard.expandCollapsedPanels | toString | quote }}
+  EXPAND_TABLES: {{ .Values.dashboard.expandTables | toString | quote }}
+  DEBUG_MODE: {{ .Values.dashboard.debugMode | toString | quote }}
+  EXTRACT_DATE_AND_DASHBOARD_NAME_FROM_HTML_PANEL_ELEMENTS: {{ .Values.dashboard.extractDateAndNameFromHtml | toString | quote }}
+
+  CHECK_QUERIES_TO_COMPLETE: {{ .Values.queryChecks.enabled | toString | quote }}
+  CHECK_QUERIES_TO_COMPLETE_MAX_QUERY_COMPLETION_TIME: {{ .Values.queryChecks.maxQueryCompletionTime | toString | quote }}
+  CHECK_QUERIES_TO_COMPLETE_QUERIES_INTERVAL: {{ .Values.queryChecks.queriesInterval | toString | quote }}
+  CHECK_QUERIES_TO_COMPLETE_QUERIES_COMPLETION_TIMEOUT: {{ .Values.queryChecks.queriesCompletionTimeout | toString | quote }}

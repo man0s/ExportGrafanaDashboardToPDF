@@ -1,0 +1,14 @@
+apiVersion: v2
+name: grafana-pdf-exporter
+description: A Helm chart for deploying Grafana PDF Exporter on Kubernetes
+type: application
+version: 0.1.0
+appVersion: "0.0.1"
+keywords:
+  - grafana
+  - pdf
+  - export
+  - puppeteer
+home: https://github.com/arthur-mdn/ExportGrafanaDashboardToPDF
+sources:
+  - https://github.com/arthur-mdn/ExportGrafanaDashboardToPDF
