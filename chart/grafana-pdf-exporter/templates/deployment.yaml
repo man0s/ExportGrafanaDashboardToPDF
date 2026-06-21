@@ -46,17 +46,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.existingSecret }}
-                  key: {{ .Values.existingSecretUserKey }}
+                  key: username
+                  optional: true
             - name: GRAFANA_PASSWORD
               valueFrom:
                 secretKeyRef:
                   name: {{ .Values.existingSecret }}
-                  key: {{ .Values.existingSecretPasswordKey }}
-            - name: GRAFANA_SERVICE_ACCOUNT
-              valueFrom:
-                secretKeyRef:
-                  name: {{ .Values.existingSecret }}
-                  key: {{ .Values.existingSecretServiceAccountKey }}
+                  key: password
             {{- else }}
             - name: GRAFANA_USER
               valueFrom:
@@ -68,11 +64,6 @@ spec:
                 secretKeyRef:
                   name: {{ include "grafana-pdf-exporter.fullname" . }}-credentials
                   key: GRAFANA_PASSWORD
-            - name: GRAFANA_SERVICE_ACCOUNT
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "grafana-pdf-exporter.fullname" . }}-credentials
-                  key: GRAFANA_SERVICE_ACCOUNT
             {{- end }}
           volumeMounts:
             - name: data

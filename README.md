@@ -38,8 +38,9 @@ GRAFANA_PASSWORD=gfexp
 GRAFANA_SERVICE_ACCOUNT=false
 ```
 
-`GRAFANA_USER` and `GRAFANA_PASSWORD` are the credentials the exporter will use to log into Grafana. For a service account
-set `GRAFANA_SERVICE_ACCOUNT` to `true` and provide token in ` GRAFANA_PASSWORD`.
+`GRAFANA_USER` and `GRAFANA_PASSWORD` are the credentials the exporter will use to log into Grafana using basic auth.
+
+For a **service account**, set `GRAFANA_SERVICE_ACCOUNT=true` and provide the service account token in `GRAFANA_PASSWORD`. In this mode, `GRAFANA_USER` is not required — the token is used as a Bearer token.
 
 ## Usage
 To start the server, run the following command:

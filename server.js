@@ -11,8 +11,13 @@ const GRAFANA_SERVICE_ACCOUNT = process.env.GRAFANA_SERVICE_ACCOUNT === 'true';
 const app = express();
 const port = process.env.EXPORT_SERVER_PORT || 3001;
 
-if (!GRAFANA_USER || !GRAFANA_PASSWORD) {
-    console.error('GRAFANA_USER and GRAFANA_PASSWORD environment variables are required. Please set them or check your .env file. See README.md for details.');
+if (GRAFANA_SERVICE_ACCOUNT) {
+    if (!GRAFANA_PASSWORD) {
+        console.error('GRAFANA_PASSWORD must contain the service account token when GRAFANA_SERVICE_ACCOUNT=true. See README.md for details.');
+        process.exit(1);
+    }
+} else if (!GRAFANA_USER || !GRAFANA_PASSWORD) {
+    console.error('GRAFANA_USER and GRAFANA_PASSWORD environment variables are required. See README.md for details.');
     process.exit(1);
 }
 

@@ -6,6 +6,7 @@ metadata:
     {{- include "grafana-pdf-exporter.labels" . | nindent 4 }}
 data:
   EXPORT_SERVER_PORT: {{ .Values.server.port | toString | quote }}
+  GRAFANA_SERVICE_ACCOUNT: {{ .Values.grafana.serviceAccount | toString | quote }}
 
   PUPPETEER_EXECUTABLE_PATH: {{ .Values.puppeteer.executablePath | quote }}
   PUPPETEER_NAVIGATION_TIMEOUT: {{ .Values.puppeteer.navigationTimeout | toString | quote }}
